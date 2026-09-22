@@ -1,0 +1,30 @@
+name: PRIMEIRO CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+Compilar:
+#criar maquina virtual para usar pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Fazer o git clone
+    - uses: actions/checkout@v4
+
+    
+    
+    - name: Executando um comando echo
+     - run: echo DEVOPS :)
+
+    - name: Executando dois ou mais comandos
+     - run: 
+     ls - 1
+     echo Fim do PROCESSO
+      
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
