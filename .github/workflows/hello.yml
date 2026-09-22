@@ -16,12 +16,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Executando um comando echo
-        run: echo DEVOPS :)
+        run: echo "DEVOPS :)"
 
       - name: Executando dois ou mais comandos
         run: |
           ls -l
-          echo Fim do PROCESSO
+          echo "Fim do PROCESSO"
 
       - name: Executando Docker
         run: |
