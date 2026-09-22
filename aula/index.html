@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gloss & Rose | O Brilho Perfeito</title>
+    <style>
+        /* --- PALETA EQUILIBRADA (ROSA CLÁSSICO) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            /* Fundo e base clara */
+            --bg-light: #fdf6f8;         /* Fundo macio e claro */
+            --card-bg: #ffffff;          /* Card limpo */
+            --pink-soft: #f7e1e8;        /* Rosa claro para fundos de suporte */
+
+            /* Rosa Clássico (Equilibrado / Chic) */
+            --pink-main: #e8638b;        /* Rosa intermediário clássico */
+            --pink-hover: #d14972;       /* Tom para passar o mouse */
+            --pink-light-accent: #f29bb4;/* Detalhes suaves */
+
+            /* Textos e Sombras */
+            --text-dark: #3a282d;        /* Texto principal bem legível */
+            --text-muted: #735a62;       /* Texto secundário */
+            --white: #ffffff;
+            --shadow-classic: 0 10px 25px rgba(232, 99, 139, 0.12);
+            --border-soft: 1px solid #f2d5de;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER & NAVEGAÇÃO --- */
+        header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: var(--border-soft);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--pink-main);
+            letter-spacing: 1.2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink-main);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(180deg, #fceef2 0%, var(--bg-light) 100%);
+            padding: 0 1.5rem;
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--pink-main);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            border: var(--border-soft);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            line-height: 1.25;
+        }
+
+        .hero h1 span {
+            color: var(--pink-main);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.4rem;
+            background: var(--pink-main);
+            color: var(--white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.98rem;
+            box-shadow: 0 6px 18px rgba(232, 99, 139, 0.28);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--pink-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(209, 73, 114, 0.35);
+        }
+
+        /* --- SEÇÃO SOBRE --- */
+        .about {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .section-tag {
+            color: var(--pink-main);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .about p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* --- CARDS DA COLEÇÃO --- */
+        .collection {
+            max-width: 1100px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: var(--border-soft);
+            box-shadow: var(--shadow-classic);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--pink-light-accent);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: var(--pink-soft);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* --- DICAS --- */
+        .tips {
+            background: var(--card-bg);
+            padding: 4rem 2.5rem;
+            border-radius: 24px;
+            max-width: 900px;
+            margin: 5rem auto;
+            border: var(--border-soft);
+            box-shadow: var(--shadow-classic);
+        }
+
+        .tips-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .tips-list li {
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--bg-light);
+            border-radius: 14px;
+            color: var(--text-dark);
+            font-size: 0.98rem;
+            border-left: 4px solid var(--pink-main);
+        }
+
+        .tips-list strong {
+            color: var(--pink-main);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--pink-soft);
+            color: var(--text-dark);
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 5rem;
+            border-top: var(--border-soft);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <nav>
+            <div class="logo">GLOSS & ROSE</div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#collection">Coleção</a></li>
+                <li><a href="#tips">Dicas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-badge">Coleção Essencial</span>
+            <h1>O Toque Perfeito de <span>Brilho & Cor</span></h1>
+            <p>A união ideal entre o cuidado diário e um acabamento elegante para os seus lábios.</p>
+            <a href="#collection" class="btn">Ver Produtos</a>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="about" id="about">
+        <span class="section-tag">Conheça a Linha</span>
+        <h2 class="section-title">Beleza sem Esforço</h2>
+        <p>
+            Fórmulas leves e confortáveis criadas para destacar o melhor dos seus lábios. 
+            Nossos glosses entregam brilho na medida certa com óleos nutritivos para manter a hidratação o dia todo.
+        </p>
+    </section>
+
+    <!-- COLEÇÃO -->
+    <section class="collection" id="collection">
+        <div style="text-align: center;">
+            <span class="section-tag">Favoritos</span>
+            <h2 class="section-title">Nossa Coleção</h2>
+        </div>
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-icon">🌸</div>
+                <h3>Rose Classic</h3>
+                <p>O tom rosa tradicional com brilho suave e acabamento natural para qualquer ocasião.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-icon">✨</div>
+                <h3>Shine Natural</h3>
+                <p>Transparente com leve toque rosado e efeito espelhado de alta durabilidade.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-icon">💋</div>
+                <h3>Berry Rose</h3>
+                <p>Um rosa levemente mais encorpado para quem busca um toque a mais de cor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DICAS DE USO -->
+    <section class="tips" id="tips">
+        <div style="text-align: center;">
+            <span class="section-tag">Dicas de Aplicação</span>
+            <h2 class="section-title">Como Usar no Dia a Dia</h2>
+        </div>
+        <ul class="tips-list">
+            <li>✨ <strong>Uso Solo:</strong> Aplique uma camada fina nos lábios para um look leve e saudável.</li>
+            <li>💄 <strong>Com Batom:</strong> Use por cima do batom no centro da boca para dar mais dimensão e volume.</li>
+            <li>💧 <strong>Hidratação:</strong> Reaplique durante o dia sempre que sentir necessidade de nutrir os lábios.</li>
+        </ul>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 Gloss & Rose. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
